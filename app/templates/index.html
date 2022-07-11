@@ -28,7 +28,7 @@
         </div>
         <div id="books">
             {% for ebook in ebooks %}
-            {% if ebook.title is not none %}
+            {% if ebook is not none %}
             <a class="book_container" href="./epub/{{ start_offset + loop.index0 }}.epub">
                 {% if ebook.cover_image_extension is not none %}
                 <div class="book" style="background-image: url(data:image/{{ ebook.cover_image_extension[1:] }};base64,{{ ebook.cover_image_content.decode('UTF-8') }});"></div>
@@ -36,8 +36,13 @@
                 <div class="book">
                 </div>
                 {% endif %}
+                {%if ebook.title is not none %}
                 <div class="info">{{ ebook.title[:18] }}</div>
                 <div class="info author">{{ ebook.authors[0][:16] }}</div>
+                {% else %}
+                <div class="info">??</div>
+                <div class="info author">??</div>
+                {% endif %}
             </a>
             {% endif %}
             {% endfor %}

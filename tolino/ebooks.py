@@ -10,4 +10,7 @@ def get_epubs(epubs_path):
 def read_info(epub_path):
     full_path = epub_path.resolve()
 
-    return epub_meta.get_epub_metadata(full_path)
+    try:
+        return epub_meta.get_epub_metadata(full_path)
+    except:
+        return None
