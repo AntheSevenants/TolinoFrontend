@@ -1,6 +1,7 @@
 import os
+import base64
 
-from flask import session, redirect, url_for, render_template, request, send_from_directory, current_app
+from flask import session, redirect, url_for, render_template, request, send_file, current_app
 from . import main
 from tolino.ebooks import get_epubs, read_info
 
@@ -24,23 +25,15 @@ def index():
 
     ebooks = [ read_info(epub) for epub in epubs ]
 
-    return render_template('index.html', ebooks=ebooks, page=page)
+    return render_template('index.html', ebooks=ebooks, page=page, start_offset=start_offset)
 
-@main.route('/dataset/<string:file>')
-def get_dataset(file):
-    print(file)
-    filename = None
+@main.route('/epub/<int:epub_index>.epub')
+def get_dataset(epub_index):
+    epubs = get_epubs(current_app.config["library_path"])
+
+    if epub_index > len(epubs):
+        return
+
+    epub = epubs[epub_index]
     
-    if file == "works":
-        filename = "works.csv"
-    elif file == "authors":
-        filename = "authors.csv"
-    elif file == "manuscripts":
-        filename = "manuscripts.csv"
-    elif file == "customs":
-        filename = "customs.csv"
-    
-    if filename is not None:
-        return send_from_directory("../", filename, max_age=0)
-    else:
-        return "miep"
+    return send_file(epub.resolve(), max_age=0)
