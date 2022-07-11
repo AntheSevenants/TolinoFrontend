@@ -18,16 +18,27 @@
             </div>
 
             <div id="buttons">
-                <div class="button">
+                <a class="button" href="./?page={{ page - 1 }}">
                     &lt;
-                </div>
-                <div class="button">
+                </a>
+                <a class="button" href="./?page={{ page + 1 }}">
                     &gt;
-                </div>
+                </a>
             </div>
         </div>
         <div id="books">
-            books
+            {% for ebook in ebooks %}
+            <div class="book_container">
+                {% if ebook.cover_image_extension is not none %}
+                <div class="book" style="background-image: url(data:image/{{ ebook.cover_image_extension[1:] }};base64,{{ ebook.cover_image_content.decode('UTF-8') }});"></div>
+                {% else %}
+                <div class="book">
+                </div>
+                {% endif %}
+                <div class="info">{{ ebook.title }}</div>
+                <div class="info author">{{ ebook.authors[0][:18] }}</div>
+            </div>
+            {% endfor %}
         </div>
     </body>
 </html>
