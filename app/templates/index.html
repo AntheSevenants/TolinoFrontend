@@ -35,8 +35,8 @@
                 <div class="book">
                 </div>
                 {% endif %}
-                <div class="info">{{ ebook.title }}</div>
-                <div class="info author">{{ ebook.authors[0][:18] }}</div>
+                <div class="info">{{ ebook.title[:18] }}</div>
+                <div class="info author">{{ ebook.authors[0][:16] }}</div>
             </a>
             {% endfor %}
         </div>
