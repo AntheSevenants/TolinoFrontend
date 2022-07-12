@@ -31,7 +31,7 @@ def index():
 def get_dataset(epub_index):
     epubs = get_epubs(current_app.config["library_path"])
 
-    if epub_index > len(epubs):
+    if epub_index >= len(epubs):
         return
 
     epub = epubs[epub_index]
