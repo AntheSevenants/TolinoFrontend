@@ -3,7 +3,9 @@ A selfhosted frontend for downloading ebooks on Tolino e-readers
 
 Since [Standaard Boekhandel](https://www.standaardboekhandel.be/) shut down its Tolino integration (and the jerry-rigged [Vivlio Cloud](https://www.standaardboekhandel.be/vivlio-e-readers/cloud) no longer works on device), I decided to build my own frontend for wirelessly transferring ebooks to my Tolino Shine.
 
-![screenshot_20220712_094440_github](https://user-images.githubusercontent.com/84721952/178437501-3a5295ed-bfae-4233-b5bf-f61acd63967e.png)
+<p align="center">
+<img src="https://user-images.githubusercontent.com/84721952/178437501-3a5295ed-bfae-4233-b5bf-f61acd63967e.png" width="450px" height="">
+</p>
 
 ## Key properties and features
 
